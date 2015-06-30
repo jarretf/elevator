@@ -15,6 +15,30 @@ public class Building {
 		
 	}
 	
+	public void press_floor_button(int current_floor,int direction)
+	{
+		int response=floors[current_floor].up_button.user_request(floors[current_floor],elevator);
+		if(response==0)
+		{
+			if(direction==0)//go down
+			{
+				for(int i=)
+			}
+			else if(direction==1)//go up
+			{
+				
+			}
+		}
+		else if(response==-1)
+		{
+			
+		}
+	}
+	public void press_elevator_button()
+	{
+		
+	}
+	
 	private void createfloors(int total_floors)
 	{
 		floors[0]=new Floor(0, new Floor_button(), null);

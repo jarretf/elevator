@@ -8,15 +8,18 @@ public class Floor_button extends Button {
 	}
 
 	@Override
-	public int user_request() {
+	public int user_request(Floor current_floor, Elevator elevator) 
+	{
 		// TODO Auto-generated method stub
-		Scanner sc= new Scanner(System.in);
-		int request=sc.nextInt();
-		while(request!=0 || request!=1)
+		if(current_floor.floor_door.state==0 && elevator.elevator_door.state==0)
 		{
-			request=sc.nextInt();
+			return 0;
 		}
-		return request;
+		else
+		{
+			System.out.println("WARNING: DOOR OPEN!!");
+			return -1;
+		}
 	}
 
 }
