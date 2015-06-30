@@ -14,6 +14,9 @@ public class Floor
 		this.floor_door=new Door();
 	}
 	
-	
+	public void request_elevator(int direction)
+	{
+		
+	}
 
 }
