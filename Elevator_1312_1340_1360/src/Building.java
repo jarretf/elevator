@@ -22,7 +22,7 @@ public class Building {
 		{
 			if(direction==0)//go down
 			{
-				for(int i=)
+				//for(int i=)
 			}
 			else if(direction==1)//go up
 			{
