@@ -21,19 +21,26 @@ public class Building {
 	
 	public void press_floor_button(int request_floor,int direction)
 	{
-	
-		int check_response=floors[request_floor].up_button.user_request(floors[request_floor],elevator);
+		int check_response;
+		if(direction==0)
+		{
+			check_response=floors[request_floor].down_button.user_request(floors[request_floor],elevator);
+		}
+		else
+		{
+			check_response=floors[request_floor].up_button.user_request(floors[request_floor],elevator);
+		}
 		if(check_response==0)
 		{
 			System.out.print("Empty Elevator moving:- ");
-			if(direction==0)//go down
+			if(elevator.get_direction(request_floor)==0)//go down
 			{
 				for(int i=elevator.current_floor.floor_no;i>=request_floor;i--)
 				{
 					System.out.print(i+"... ");
 				}
 			}
-			else if(direction==1)//go up
+			else if(elevator.get_direction(request_floor)==1)//go up
 			{
 				
 				for(int i=elevator.current_floor.floor_no;i<=request_floor;i++)
@@ -56,6 +63,7 @@ public class Building {
 		{
 			System.out.println("WARNING: DOOR OPEN!!");
 		}
+		System.out.println();
 	}
 	private void press_elevator_button(int current_floor)
 	{
