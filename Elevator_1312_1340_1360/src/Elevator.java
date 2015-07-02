@@ -3,13 +3,13 @@ public class Elevator {
 
 	public Button panel_button;
 	public Door elevator_door;
-	public int current_floor;
+	public Floor current_floor;
 	
-	public Elevator(int total_floors) {
+	public Elevator(int total_floors,Floor current_floor) {
 		// TODO Auto-generated constructor stub
-		current_floor=0;
-		panel_button=new Panel_button(total_floors);
-		elevator_door=new Door();
+		this.current_floor=current_floor;
+		this.panel_button=new Panel_button(total_floors);
+		this.elevator_door=new Elevator_door();
 	}
 	
 	public void request_floor(int floor_no)

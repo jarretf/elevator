@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 
 
 public class Floor_button extends Button {
@@ -17,7 +17,7 @@ public class Floor_button extends Button {
 		}
 		else
 		{
-			System.out.println("WARNING: DOOR OPEN!!");
+			
 			return -1;
 		}
 	}

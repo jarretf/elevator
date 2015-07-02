@@ -11,7 +11,7 @@ public class Floor
 		this.floor_no = floor_no;
 		this.up_button = up_button;
 		this.down_button = down_button;
-		this.floor_door=new Door();
+		this.floor_door=new Floor_door();
 	}
 	
 
