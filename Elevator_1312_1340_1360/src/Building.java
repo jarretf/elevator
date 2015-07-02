@@ -47,7 +47,9 @@ public class Building {
 			elevator.elevator_door.toggle_door();
 			floors[request_floor].floor_door.toggle_door();
 			elevator.elevator_door.toggle_door();
-			//press_elevator_button();
+			//System.out.println("elevator at = "+elevator.current_floor.floor_no);
+			press_elevator_button(request_floor);
+			
 			
 		}
 		else if(check_response==-1)
@@ -55,32 +57,45 @@ public class Building {
 			System.out.println("WARNING: DOOR OPEN!!");
 		}
 	}
-	private void press_elevator_button(int request_floor)
+	private void press_elevator_button(int current_floor)
 	{
 		Scanner sc=new Scanner(System.in);
-		System.out.println("Enter the floor which your want to go");
+		System.out.println("Enter the floor which your want to go: ");
 		int user_response=sc.nextInt();
-		validate_user_request(user_response);
-		int check_response=elevator.panel_button.user_request(floors[elevator.current_floor.floor_no], elevator);
-		if(check_response==0)
+		int check_response_1=validate_user_request(user_response);
+		while(check_response_1==-1)
+		{
+			user_response=sc.nextInt();
+			check_response_1=validate_user_request(user_response);
+		}
+		int check_response_2=elevator.panel_button.user_request(floors[elevator.current_floor.floor_no], elevator);
+		
+		
+		if(check_response_2==0)
 		{
 			
 		}
-		else if(check_response==-1)
+		else if(check_response_2==-1)
 		{
 			System.out.println("WARNING: DOOR OPEN!!");
 		}
+		sc.close();
 	}
 	
 	private int validate_user_request(int user_response)
 	{
-		
+		if(user_response==elevator.current_floor.floor_no)
+		{
+			System.out.println("You're already on floor= "+user_response);
+			return -1;
+		}
 		if(user_response>=0 && user_response<total_floors)
 		{
 			return 0;
 		}
 		else
 		{
+			System.out.println("Please input a valid floor (0-"+(total_floors-1)+")");
 			return -1;
 		}
 	}
