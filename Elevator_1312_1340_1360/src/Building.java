@@ -25,7 +25,7 @@ public class Building {
 		int check_response=floors[request_floor].up_button.user_request(floors[request_floor],elevator);
 		if(check_response==0)
 		{
-			System.out.print("Elevator moving:- ");
+			System.out.print("Empty Elevator moving:- ");
 			if(direction==0)//go down
 			{
 				for(int i=elevator.current_floor.floor_no;i>=request_floor;i--)
@@ -70,10 +70,31 @@ public class Building {
 		}
 		int check_response_2=elevator.panel_button.user_request(floors[elevator.current_floor.floor_no], elevator);
 		
-		
 		if(check_response_2==0)
 		{
-			
+			System.out.print("Empty Elevator moving:- ");
+			int direction=elevator.get_direction(user_response);
+			if(direction==0)//go down
+			{
+				for(int i=elevator.current_floor.floor_no;i>=user_response;i--)
+				{
+					System.out.print(i+"... ");
+				}
+			}
+			else if(direction==1)//go up
+			{
+				
+				for(int i=elevator.current_floor.floor_no;i<=user_response;i++)
+				{
+					System.out.print(i+"... ");
+				}
+			}
+			System.out.println();
+			elevator.current_floor.floor_no=user_response;
+			floors[user_response].floor_door.toggle_door();
+			elevator.elevator_door.toggle_door();
+			floors[user_response].floor_door.toggle_door();
+			elevator.elevator_door.toggle_door();
 		}
 		else if(check_response_2==-1)
 		{

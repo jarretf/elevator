@@ -12,8 +12,16 @@ public class Elevator {
 		this.elevator_door=new Elevator_door();
 	}
 	
-	public void request_floor(int floor_no)
+	public int get_direction(int request_floor_no)
 	{
-		
+		if(request_floor_no>current_floor.floor_no)
+		{
+			return 1;
+		}
+		else if(request_floor_no<current_floor.floor_no)
+		{
+			return 0;
+		}
+		return -1;
 	}
 }
