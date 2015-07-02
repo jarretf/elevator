@@ -15,14 +15,7 @@ public class Panel_button extends Button{
 	{
 		if(current_floor.floor_door.state==0 && elevator.elevator_door.state==0)
 		{
-			Scanner sc= new Scanner(System.in);
-			int request=sc.nextInt();
-			while(request<0 || request>total_floors-1)
-			{
-				request=sc.nextInt();
-			}
-			sc.close();
-			return request;
+			return 0;
 		}
 		else
 		{
