@@ -5,9 +5,11 @@ public class Building {
 
 	Floor []floors;
 	Elevator elevator;
+	int total_floors;
 	
 	public Building(int total_floors) 
 	{
+		this.total_floors=total_floors;
 		floors=new Floor[total_floors];
 		createfloors(total_floors);
 		elevator=new Elevator(total_floors,floors[0]);
@@ -23,7 +25,7 @@ public class Building {
 		int check_response=floors[request_floor].up_button.user_request(floors[request_floor],elevator);
 		if(check_response==0)
 		{
-			System.out.println("Elevator moving:- ");
+			System.out.print("Elevator moving:- ");
 			if(direction==0)//go down
 			{
 				for(int i=elevator.current_floor.floor_no;i>=request_floor;i--)
@@ -53,13 +55,34 @@ public class Building {
 			System.out.println("WARNING: DOOR OPEN!!");
 		}
 	}
-	private void press_elevator_button()
+	private void press_elevator_button(int request_floor)
 	{
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the floor which your want to go");
-		int response=sc.nextInt();
-		//int check_response=elevator.panel_button.user_request(current_floor, elevator)
+		int user_response=sc.nextInt();
+		validate_user_request(user_response);
+		int check_response=elevator.panel_button.user_request(floors[elevator.current_floor.floor_no], elevator);
+		if(check_response==0)
+		{
+			
+		}
+		else if(check_response==-1)
+		{
+			System.out.println("WARNING: DOOR OPEN!!");
+		}
+	}
+	
+	private int validate_user_request(int user_response)
+	{
 		
+		if(user_response>=0 && user_response<total_floors)
+		{
+			return 0;
+		}
+		else
+		{
+			return -1;
+		}
 	}
 	
 	private void createfloors(int total_floors)

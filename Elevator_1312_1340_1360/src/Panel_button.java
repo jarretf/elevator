@@ -13,13 +13,14 @@ public class Panel_button extends Button{
 	@Override
 	public int user_request(Floor current_floor, Elevator elevator) 
 	{
-		if(current_floor.floor_door.state==0 && elevator.elevator_door.state==0)
+		if((current_floor.floor_door.state==0 && elevator.elevator_door.state==0) )
 		{
+			
 			return 0;
 		}
 		else
 		{
-			System.out.println("WARNING: DOOR OPEN!!");
+			
 			return -1;
 		}
 	}
